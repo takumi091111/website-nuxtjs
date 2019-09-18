@@ -25,18 +25,25 @@ export default Vue.extend()
   grid-template-rows: 50px minmax(calc(100vh - 170px), auto) 50px;
   grid-template-columns: 1fr;
   padding: 10px 0;
+  @media (max-width: 640px) {
+    grid-template-rows: auto minmax(calc(100vh - 150px), auto) 50px;
+    padding: 0;
+  }
 }
 
 header {
   grid-area: header;
 }
 
-.main {
+main {
   grid-area: main;
   padding: 0 10px;
 }
 
 footer {
+  display: flex;
   grid-area: footer;
+  align-items: center;
+  justify-content: center;
 }
 </style>
