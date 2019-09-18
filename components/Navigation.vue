@@ -1,20 +1,13 @@
 <template>
-  <ul :class="listClass">
-    <li v-for="route in routes" :key="route.name">
-      <slot :route="route" />
-    </li>
-  </ul>
+  <nav :class="navClass">
+    <slot />
+  </nav>
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
-import { Route } from '~/assets/interfaces/Route'
+import Vue from 'vue'
 export default Vue.extend({
   props: {
-    routes: {
-      type: Array as PropType<Route[]>,
-      required: true
-    },
     isExpanded: {
       type: Boolean || null,
       required: false,
@@ -22,8 +15,8 @@ export default Vue.extend({
     }
   },
   computed: {
-    listClass() {
-      const className = 'header-list'
+    navClass() {
+      const className = 'navigation'
       if (this.isExpanded === null) return className
       return [className, this.isExpanded ? 'slideIn' : 'slideOut']
         .join(' ')
@@ -34,19 +27,12 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-ul {
-  display: grid;
-  grid-column-gap: 80px;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(3, 150px);
+.navigation {
+  display: flex;
   align-items: center;
   justify-content: center;
   height: 0;
   overflow-y: hidden;
-  @media (max-width: 640px) {
-    grid-template-rows: repeat(3, 50px);
-    grid-template-columns: 150px;
-  }
   @media (min-width: 641px) {
     height: 100%;
   }
