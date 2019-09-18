@@ -59,7 +59,13 @@ const config: Configuration = {
     /*
      ** You can extend webpack config here
      */
-    extend(_config, _ctx) {},
+    extend(config, _ctx) {
+      if (!config.module) return
+      config.module.rules.push({
+        test: /\.vue$/,
+        loader: 'vue-svg-inline-loader'
+      })
+    },
     postcss: {
       preset: {
         stage: 0
