@@ -23,5 +23,6 @@ a {
   line-height: 40px;
   text-align: center;
   text-decoration: none;
+  border-radius: 25px;
 }
 </style>
