@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <fragment>
     <h1>Home</h1>
-  </div>
+  </fragment>
 </template>
 
 <style>
