@@ -1,6 +1,8 @@
 <template>
-  <nav :class="navClass">
-    <slot />
+  <nav class="navigation">
+    <ul :class="animateClass">
+      <slot />
+    </ul>
   </nav>
 </template>
 
@@ -15,12 +17,9 @@ export default Vue.extend({
     }
   },
   computed: {
-    navClass() {
-      const className = 'navigation'
-      if (this.isExpanded === null) return className
-      return [className, this.isExpanded ? 'slideIn' : 'slideOut']
-        .join(' ')
-        .trim()
+    animateClass() {
+      if (this.isExpanded === null) return ''
+      return this.isExpanded ? 'slideIn' : 'slideOut'
     }
   }
 })
@@ -29,12 +28,23 @@ export default Vue.extend({
 <style lang="postcss" scoped>
 .navigation {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 0;
-  overflow-y: hidden;
-  @media (min-width: 641px) {
-    height: 100%;
+  height: 100%;
+  & ul {
+    display: grid;
+    grid-column-gap: 80px;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 150px);
+    align-items: center;
+    height: 0;
+    overflow-y: hidden;
+    @media (max-width: 640px) {
+      grid-template-rows: repeat(3, 50px);
+      grid-template-columns: 150px;
+    }
+    @media (min-width: 641px) {
+      height: 100%;
+    }
   }
 }
 

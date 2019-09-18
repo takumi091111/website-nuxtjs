@@ -1,9 +1,9 @@
 <template>
-  <ul class="navigation-list">
+  <fragment>
     <li v-for="route in routes" :key="route.name">
       <slot :route="route" />
     </li>
-  </ul>
+  </fragment>
 </template>
 
 <script lang="ts">
@@ -18,18 +18,3 @@ export default Vue.extend({
   }
 })
 </script>
-
-<style lang="postcss" scoped>
-.navigation-list {
-  display: grid;
-  grid-column-gap: 80px;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(3, 150px);
-  align-items: center;
-  justify-content: center;
-  @media (max-width: 640px) {
-    grid-template-rows: repeat(3, 50px);
-    grid-template-columns: 150px;
-  }
-}
-</style>
