@@ -25,7 +25,7 @@ const config: Configuration = {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['minireset.css'],
   /*
    ** Plugins to load before mounting the App
    */
