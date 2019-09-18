@@ -59,7 +59,12 @@ const config: Configuration = {
     /*
      ** You can extend webpack config here
      */
-    extend(_config, _ctx) {}
+    extend(_config, _ctx) {},
+    postcss: {
+      preset: {
+        stage: 0
+      }
+    }
   }
 }
 
