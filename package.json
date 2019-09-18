@@ -9,10 +9,12 @@
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
-    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore ."
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
+    "lint:style": "stylelint '**/*.{css,vue}'"
   },
   "lint-staged": {
-    "*.{ts,js,vue}": "eslint"
+    "*.{ts,js,vue}": "eslint",
+    "*.{css,vue}": "stylelint"
   },
   "husky": {
     "hooks": {
@@ -27,10 +29,12 @@
     "vue-fragment": "^1.5.1"
   },
   "devDependencies": {
+    "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0",
     "@nuxt/typescript-build": "^0.2.9",
     "@nuxt/typescript-runtime": "^0.1.6",
     "@nuxtjs/eslint-config-typescript": "^0.1.3",
     "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/stylelint-module": "^2.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^4.1.0",
@@ -38,6 +42,9 @@
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^2.6.0",
     "lint-staged": "^8.2.1",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "stylelint": "^11.0.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-order": "^3.1.1"
   }
 }
