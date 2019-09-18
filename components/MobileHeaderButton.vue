@@ -25,5 +25,7 @@ export default Vue.extend({
 .mobile-header-button {
   width: 50px;
   height: 50px;
+  background-color: transparent;
+  border: none;
 }
 </style>
