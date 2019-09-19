@@ -4,6 +4,10 @@ html {
   letter-spacing: 0.5px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 svg {
   vertical-align: top;
   fill: var(--font-color);
