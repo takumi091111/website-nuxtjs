@@ -1,5 +1,5 @@
 <template>
-  <a class="social-list-item" :href="link.url">
+  <a class="social-list-item" :href="link.url" :aria-label="link.name">
     <img
       v-if="link.name === 'Discord'"
       svg-inline
