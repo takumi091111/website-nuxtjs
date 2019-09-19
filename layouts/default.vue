@@ -6,7 +6,8 @@
           <theme-icon />
         </mobile-header-button>
         <mobile-header-button label="Toggle Menu" @click="toggleMenu">
-          <menu-icon />
+          <menu-icon v-if="!isExpanded" />
+          <close-icon v-if="isExpanded" />
         </mobile-header-button>
       </mobile-header>
       <navigation :is-expanded="isExpanded">
@@ -32,6 +33,7 @@ import Grid from '~/components/Grid.vue'
 import MobileHeader from '~/components/MobileHeader.vue'
 import MobileHeaderButton from '~/components/MobileHeaderButton.vue'
 import MenuIcon from '~/components/MenuIcon.vue'
+import CloseIcon from '~/components/CloseIcon.vue'
 import ThemeIcon from '~/components/ThemeIcon.vue'
 import Navigation from '~/components/Navigation.vue'
 import NavigationList from '~/components/NavigationList.vue'
@@ -42,6 +44,7 @@ export default Vue.extend({
   components: {
     Grid,
     MenuIcon,
+    CloseIcon,
     ThemeIcon,
     MobileHeader,
     MobileHeaderButton,

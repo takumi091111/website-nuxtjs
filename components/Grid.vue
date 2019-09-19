@@ -36,7 +36,9 @@ header {
 }
 
 main {
+  display: flex;
   grid-area: main;
+  justify-content: center;
   padding: 0 10px;
 }
 
