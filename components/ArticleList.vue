@@ -1,6 +1,6 @@
 <template>
   <ul class="article-list">
-    <li v-for="article in articles.items" :key="article.sys.id">
+    <li v-for="article in articles" :key="article.sys.id">
       <slot :article="article" />
     </li>
   </ul>
@@ -8,11 +8,11 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Articles } from '~/assets/interfaces/Article'
+import { Article } from '~/assets/interfaces/Article'
 export default Vue.extend({
   props: {
     articles: {
-      type: Object as PropType<Articles>,
+      type: Array as PropType<Article[]>,
       required: true
     }
   }
