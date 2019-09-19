@@ -13,7 +13,7 @@
       <navigation :is-expanded="isExpanded">
         <navigation-list :routes="routes">
           <template #default="{route}">
-            <navigation-list-item :route="route" />
+            <navigation-list-item :route="route" @click="closeMenu" />
           </template>
         </navigation-list>
       </navigation>
@@ -63,6 +63,9 @@ export default Vue.extend({
     toggleMenu() {
       const isExpanded = this.isExpanded
       this.isExpanded = isExpanded === null ? true : !isExpanded
+    },
+    closeMenu() {
+      this.isExpanded = false
     }
   }
 })

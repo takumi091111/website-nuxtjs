@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="route.path">
+  <nuxt-link :to="route.path" @click.native="onClick">
     {{ route.name }}
   </nuxt-link>
 </template>
@@ -12,6 +12,11 @@ export default Vue.extend({
     route: {
       type: Object as PropType<Route>,
       required: true
+    }
+  },
+  methods: {
+    onClick() {
+      return this.$emit('click')
     }
   }
 })
