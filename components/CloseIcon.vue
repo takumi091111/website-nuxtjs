@@ -1,5 +1,5 @@
 <template>
-  <img svg-inline src="~/assets/images/theme.svg" />
+  <img svg-inline src="~/assets/images/close.svg" />
 </template>
 
 <script lang="ts">
@@ -9,7 +9,7 @@ export default Vue.extend()
 
 <style lang="postcss" scoped>
 svg {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 </style>
