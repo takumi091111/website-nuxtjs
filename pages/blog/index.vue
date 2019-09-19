@@ -1,6 +1,6 @@
 <template>
   <main-container is-centered>
-    <article-list :articles="articles">
+    <article-list :articles="articles.items">
       <template #default="{article}">
         <article-list-item :article="article" />
       </template>
@@ -13,15 +13,20 @@ import Vue from 'vue'
 import MainContainer from '~/components/MainContainer.vue'
 import ArticleList from '~/components/ArticleList.vue'
 import ArticleListItem from '~/components/ArticleListItem.vue'
+import { Articles } from '~/assets/interfaces/Article'
+import { fetchArticles } from '~/assets/utils/api'
 export default Vue.extend({
   components: {
     MainContainer,
     ArticleList,
     ArticleListItem
   },
-  data() {
+  async asyncData({ payload }) {
+    if (payload) {
+      return { articles: payload as Articles }
+    }
     return {
-      articles: []
+      articles: await fetchArticles(1000)
     }
   }
 })
