@@ -31,7 +31,7 @@ export default Vue.extend({
 }
 
 .half {
-  width: 100vw;
+  width: calc(100vw - 20px);
   max-width: 500px;
 }
 </style>
