@@ -25,7 +25,11 @@ const config: Configuration = {
   /*
    ** Global CSS
    */
-  css: ['minireset.css', '~/assets/styles/animate.css'],
+  css: [
+    'minireset.css',
+    '~/assets/styles/animate.css',
+    '~/assets/styles/style.css'
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -45,13 +49,23 @@ const config: Configuration = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-webfontloader'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  webfontloader: {
+    custom: {
+      families: ['M PLUS Rounded 1c:n4,n7,n8', 'Fira Mono:n4'],
+      urls: [
+        'https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700,800&display=swap&subset=japanese',
+        'https://fonts.googleapis.com/css?family=Fira+Mono&display=swap'
+      ]
+    }
+  },
   /*
    ** Build configuration
    */

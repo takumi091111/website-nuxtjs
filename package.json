@@ -26,6 +26,7 @@
     "@nuxtjs/pwa": "^3.0.0-0",
     "minireset.css": "^0.0.5",
     "nuxt": "^2.0.0",
+    "nuxt-webfontloader": "^1.1.0",
     "vue-fragment": "^1.5.1"
   },
   "devDependencies": {
