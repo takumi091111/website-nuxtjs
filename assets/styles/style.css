@@ -9,14 +9,6 @@ svg {
   fill: var(--font-color);
 }
 
-h1,
-h2 {
-  font-weight: 800;
-  font-size: 2rem;
-  line-height: 80%;
-  text-align: left;
-}
-
 a, h1, h2, h3, h4, li, p, span, input, pre {
   text-shadow: 0 0 1px rgba(0,0,0,.1);
   transform: rotate(.028deg);

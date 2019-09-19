@@ -15,6 +15,11 @@ export default Vue.extend()
   & p {
     text-align: center;
   }
+  & h1 {
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 80%;
+  }
   & > *:not(:last-child) {
     margin-bottom: 25px;
   }
