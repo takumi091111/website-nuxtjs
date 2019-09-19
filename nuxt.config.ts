@@ -25,7 +25,7 @@ const config: Configuration = {
   /*
    ** Global CSS
    */
-  css: ['minireset.css'],
+  css: ['minireset.css', '~/assets/styles/animate.css'],
   /*
    ** Plugins to load before mounting the App
    */
