@@ -23,7 +23,7 @@ export default Vue.extend({
 
 <style lang="postcss" scoped>
 .separator {
-  width: calc(100vw - 20px);
+  width: 100%;
   max-width: 1000px;
   border-style: solid;
   border-width: 1.5px 0;
@@ -31,6 +31,7 @@ export default Vue.extend({
 }
 
 .half {
+  width: 100vw;
   max-width: 500px;
 }
 </style>
