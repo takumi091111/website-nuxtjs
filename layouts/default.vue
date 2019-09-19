@@ -20,6 +20,9 @@
     </template>
     <template #main>
       <nuxt />
+      <floating-button label="Switch Theme" @click="toggleTheme">
+        <theme-icon />
+      </floating-button>
     </template>
     <template #footer>
       <v-footer />
@@ -38,6 +41,7 @@ import ThemeIcon from '~/components/ThemeIcon.vue'
 import Navigation from '~/components/Navigation.vue'
 import NavigationList from '~/components/NavigationList.vue'
 import NavigationListItem from '~/components/NavigationListItem.vue'
+import FloatingButton from '~/components/FloatingButton.vue'
 import Footer from '~/components/Footer.vue'
 import routes from '~/assets/data/routes'
 import themes from '~/assets/data/themes'
@@ -52,6 +56,7 @@ export default Vue.extend({
     Navigation,
     NavigationList,
     NavigationListItem,
+    FloatingButton,
     'v-footer': Footer
   },
   data() {
