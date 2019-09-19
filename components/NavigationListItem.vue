@@ -24,10 +24,18 @@ export default Vue.extend({
 
 <style lang="postcss" scoped>
 a {
+  &:hover {
+    color: var(--font-hover-color);
+    background-color: var(--background-hover-color);
+  }
   display: block;
+  color: var(--font-color);
+  font-weight: 800;
+  font-size: 1.4rem;
   line-height: 40px;
   text-align: center;
   text-decoration: none;
   border-radius: 25px;
+  transition: all 0.2s;
 }
 </style>

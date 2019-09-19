@@ -25,13 +25,14 @@ export default Vue.extend({
 .separator {
   width: 100%;
   max-width: 1000px;
+  border-color: var(--border-color);
   border-style: solid;
   border-width: 1.5px 0;
   border-radius: 2px;
 }
 
 .half {
-  width: calc(100vw - 20px);
+  width: calc(100vw - 50px);
   max-width: 500px;
 }
 </style>

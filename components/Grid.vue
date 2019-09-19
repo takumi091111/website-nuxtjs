@@ -25,14 +25,23 @@ export default Vue.extend()
   grid-template-rows: 50px minmax(calc(100vh - 170px), auto) 50px;
   grid-template-columns: 1fr;
   padding: 10px 0;
+  color: var(--font-color);
+  background-color: var(--background-color);
   @media (max-width: 640px) {
-    grid-template-rows: auto minmax(calc(100vh - 150px), auto) 50px;
+    grid-template-rows: auto minmax(calc(100vh - 153px), auto) 50px;
     padding: 0;
   }
 }
 
 header {
   grid-area: header;
+  background-color: var(--background-color);
+  @media (max-width: 640px) {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 3px solid var(--border-color);
+  }
 }
 
 main {

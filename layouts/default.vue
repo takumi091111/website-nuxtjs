@@ -1,8 +1,8 @@
 <template>
-  <grid>
+  <grid :style="currentTheme">
     <template #header>
       <mobile-header>
-        <mobile-header-button label="Toggle Theme">
+        <mobile-header-button label="Toggle Theme" @click="toggleTheme">
           <theme-icon />
         </mobile-header-button>
         <mobile-header-button label="Toggle Menu" @click="toggleMenu">
@@ -40,6 +40,7 @@ import NavigationList from '~/components/NavigationList.vue'
 import NavigationListItem from '~/components/NavigationListItem.vue'
 import Footer from '~/components/Footer.vue'
 import routes from '~/assets/data/routes'
+import themes from '~/assets/data/themes'
 export default Vue.extend({
   components: {
     Grid,
@@ -56,10 +57,20 @@ export default Vue.extend({
   data() {
     return {
       routes,
+      themes,
+      theme: 'light',
       isExpanded: null as Boolean | null
     }
   },
+  computed: {
+    currentTheme(): object {
+      return this.themes[this.theme]
+    }
+  },
   methods: {
+    toggleTheme() {
+      this.theme = this.theme === 'light' ? 'dark' : 'light'
+    },
     toggleMenu() {
       const isExpanded = this.isExpanded
       this.isExpanded = isExpanded === null ? true : !isExpanded

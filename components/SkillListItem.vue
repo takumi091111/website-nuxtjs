@@ -29,7 +29,7 @@ export default Vue.extend({
   align-items: center;
   min-width: calc(950px / 3);
   height: 100px;
-  border: 3px solid;
+  border: 3px solid var(--border-color);
   border-radius: 25px;
   @media (max-width: 1000px) {
     min-width: 100%;

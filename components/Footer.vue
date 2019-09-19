@@ -8,3 +8,10 @@
 import Vue from 'vue'
 export default Vue.extend()
 </script>
+
+<style lang="postcss" scoped>
+p {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+</style>
