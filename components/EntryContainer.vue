@@ -1,5 +1,5 @@
 <template>
-  <article class="article-container">
+  <article class="entry-container">
     <slot />
   </article>
 </template>
@@ -10,7 +10,7 @@ export default Vue.extend()
 </script>
 
 <style lang="postcss" scoped>
-.article-container {
+.entry-container {
   & > *:not(:last-child) {
     margin-bottom: 25px;
   }

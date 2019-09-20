@@ -1,4 +1,4 @@
-export interface Article {
+export interface Entry {
   fields: {
     title: string
     summary: string
@@ -35,12 +35,12 @@ export interface Article {
   }
 }
 
-export interface Articles {
+export interface Entries {
   sys: {
     type: 'Array'
   }
   total: number
   skip: number
   limit: number
-  items: Article[]
+  items: Entry[]
 }

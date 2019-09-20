@@ -1,5 +1,5 @@
 <template>
-  <section class="article-header">
+  <section class="entry-header">
     <p class="date">{{ date }}</p>
     <h1>{{ title }}</h1>
   </section>
@@ -32,7 +32,7 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-.article-header {
+.entry-header {
   width: calc(100vw - 40px);
   max-width: 800px;
   @media (max-width: 800px) {

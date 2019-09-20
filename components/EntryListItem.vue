@@ -1,28 +1,28 @@
 <template>
-  <nuxt-link class="article-list-item" :to="link">
-    <h1>{{ article.fields.title }}</h1>
+  <nuxt-link class="entry-list-item" :to="link">
+    <h1>{{ entry.fields.title }}</h1>
     <p class="date">{{ date }}</p>
-    <p class="summary">{{ article.fields.summary }}</p>
+    <p class="summary">{{ entry.fields.summary }}</p>
   </nuxt-link>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Article } from '~/assets/interfaces/Article'
+import { Entry } from '~/assets/interfaces/Entry'
 export default Vue.extend({
   props: {
-    article: {
-      type: Object as PropType<Article>,
+    entry: {
+      type: Object as PropType<Entry>,
       required: true
     }
   },
   computed: {
     link() {
-      const link = `/blog/${this.article.sys.id}`
+      const link = `/blog/entry/${this.entry.sys.id}`
       return link
     },
     date() {
-      const createdAt = new Date(this.article.sys.createdAt)
+      const createdAt = new Date(this.entry.sys.createdAt)
       return [
         createdAt.getFullYear(),
         ('0' + (createdAt.getMonth() + 1)).slice(-2),
@@ -34,7 +34,7 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-.article-list-item {
+.entry-list-item {
   &:hover {
     color: var(--font-hover-color);
     background-color: var(--background-hover-color);

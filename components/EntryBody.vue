@@ -1,5 +1,5 @@
 <template>
-  <section class="article-body" v-html="html" />
+  <section class="entry-body" v-html="html" />
 </template>
 
 <script lang="ts">
@@ -22,7 +22,7 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-.article-body {
+.entry-body {
   width: calc(100vw - 40px);
   max-width: 800px;
   @media (max-width: 800px) {

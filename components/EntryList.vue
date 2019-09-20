@@ -1,18 +1,18 @@
 <template>
-  <ul class="article-list">
-    <li v-for="article in articles" :key="article.sys.id">
-      <slot :article="article" />
+  <ul class="entry-list">
+    <li v-for="entry in entries" :key="entry.sys.id">
+      <slot :entry="entry" />
     </li>
   </ul>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Article } from '~/assets/interfaces/Article'
+import { Entry } from '~/assets/interfaces/Entry'
 export default Vue.extend({
   props: {
-    articles: {
-      type: Array as PropType<Article[]>,
+    entries: {
+      type: Array as PropType<Entry[]>,
       required: true
     }
   }
@@ -20,7 +20,7 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-.article-list {
+.entry-list {
   display: flex;
   flex-direction: column;
   & li {
