@@ -29,7 +29,7 @@ import Separator from '~/components/Separator.vue'
 import SkillList from '~/components/SkillList.vue'
 import SkillListItem from '~/components/SkillListItem.vue'
 import SkillListItemIcon from '~/components/SkillListItemIcon.vue'
-import skills from '~/assets/data/skills'
+import skills from '~/assets/data/skills.json'
 export default Vue.extend({
   components: {
     MainContainer,

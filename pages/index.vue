@@ -17,7 +17,7 @@ import Avatar from '~/components/Avatar.vue'
 import Separator from '~/components/Separator.vue'
 import SocialList from '~/components/SocialList.vue'
 import SocialListItem from '~/components/SocialListItem.vue'
-import links from '~/assets/data/links'
+import links from '~/assets/data/links.json'
 export default Vue.extend({
   components: {
     MainContainer,

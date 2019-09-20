@@ -43,8 +43,8 @@ import NavigationList from '~/components/NavigationList.vue'
 import NavigationListItem from '~/components/NavigationListItem.vue'
 import FloatingButton from '~/components/FloatingButton.vue'
 import Footer from '~/components/Footer.vue'
-import routes from '~/assets/data/routes'
-import themes from '~/assets/data/themes'
+import routes from '~/assets/data/routes.json'
+import themes from '~/assets/data/themes.json'
 export default Vue.extend({
   components: {
     Grid,
