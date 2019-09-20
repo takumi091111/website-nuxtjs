@@ -9,7 +9,7 @@ export const convertToHTML = (src: string) => {
 
     return [
       `<h${level} id="${slug}">`,
-      `<a href="#${slug}" class="anchor"></a>`,
+      `<a href="#${slug}" class="anchor" aria-label="${slug}"></a>`,
       text,
       `</h${level}>`
     ].join('')
