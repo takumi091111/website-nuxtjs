@@ -1,9 +1,12 @@
+import { config } from 'dotenv'
 import { Configuration } from '@nuxt/types'
 import { fetchEntries } from './assets/utils/api'
 import { saveEntries } from './assets/utils/generate'
 import { BlogEntry } from './assets/interfaces/Entry'
 
-const config: Configuration = {
+config()
+
+const NuxtConfig: Configuration = {
   mode: 'universal',
   head: {
     titleTemplate: '%sAsamac',
@@ -34,6 +37,7 @@ const config: Configuration = {
     '@nuxt/typescript-build'
   ],
   modules: [
+    '@nuxtjs/dotenv',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'nuxt-webfontloader',
@@ -126,4 +130,4 @@ const config: Configuration = {
   }
 }
 
-export default config
+export default NuxtConfig

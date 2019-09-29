@@ -1,13 +1,10 @@
-import axios from 'axios'
-import { Entries } from '../interfaces/Contentful'
+import { createClient } from 'contentful'
 import { EntryFields } from '../interfaces/Entry'
 
-const API_URL = 'https://blog-api.asamac.now.sh'
-
-export const fetchEntries = async (limit = 10, skip = 0) => {
-  const url = new URL(`${API_URL}/entries/list`)
-  url.searchParams.append('limit', limit.toString())
-  url.searchParams.append('skip', skip.toString())
-  const { data } = await axios.get<Entries<EntryFields>>(String(url))
-  return data
+export const fetchEntries = (limit = 10, skip = 0) => {
+  const client = createClient({
+    space: process.env.CTF_SPACE_ID!,
+    accessToken: process.env.CTF_CDA_ACCESS_TOKEN!
+  })
+  return client.getEntries<EntryFields>({ limit, skip })
 }
