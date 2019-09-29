@@ -24,7 +24,7 @@ const NuxtConfig: Configuration = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  loading: { color: '#fff' },
+  loading: { color: '#f7f7f7' },
   css: [
     'minireset.css',
     './assets/styles/style.css',
@@ -47,12 +47,14 @@ const NuxtConfig: Configuration = {
   pwa: {
     manifest: {
       name: 'Asamac',
+      short_name: 'Asamac',
+      background_color: '#252627',
+      description: "Asamac's Portfolio, and Blog",
       lang: 'ja'
     },
     meta: {
       name: 'Asamac',
-      theme_color: '#252627',
-      ogType: ''
+      theme_color: '#252627'
     }
   },
   webfontloader: {
