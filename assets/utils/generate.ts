@@ -4,7 +4,14 @@ import { promises } from 'fs'
 import { EntryCollection } from 'contentful'
 import { EntryFields, BlogEntry } from '../interfaces/Entry'
 
-const { writeFile } = promises
+const { stat, mkdir, writeFile } = promises
+
+const makeEntriesFolderIfNotExists = async () => {
+  const path = join(process.cwd(), 'assets', 'entries')
+  await stat(path).catch(async () => {
+    await mkdir(path)
+  })
+}
 
 const saveFile = async (path: string, file: any) => {
   const savePath = join(process.cwd(), 'assets', path)
@@ -27,6 +34,8 @@ export const getEntries = (
 
 /* eslint no-console: 0 */
 export const saveEntries = async (entries: EntryCollection<EntryFields>) => {
+  await makeEntriesFolderIfNotExists()
+
   const blogEntries = getEntries(entries)
   await saveFile(`/entries/list.json`, blogEntries)
   console.log('Generate Entries: ', 'list.json')
