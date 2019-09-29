@@ -1,5 +1,13 @@
 <template>
-  <a class="social-list-item" :href="link.url" :aria-label="link.name">
+  <a
+    class="social-list-item"
+    :href="link.url"
+    :aria-label="link.name"
+    @click="toggleTooltip"
+  >
+    <tooltip v-if="link.name === 'Discord'" :is-active="isActive">
+      <p>/\sαмας#9352</p>
+    </tooltip>
     <img
       v-if="link.name === 'Discord'"
       svg-inline
@@ -21,11 +29,25 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { Link } from '~/assets/interfaces/Link'
+import Tooltip from '~/components/Tooltip.vue'
 export default Vue.extend({
+  components: {
+    Tooltip
+  },
   props: {
     link: {
       type: Object as PropType<Link>,
       required: true
+    }
+  },
+  data() {
+    return {
+      isActive: false
+    }
+  },
+  methods: {
+    toggleTooltip() {
+      this.isActive = !this.isActive
     }
   }
 })
