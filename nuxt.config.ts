@@ -1,12 +1,15 @@
 import { Configuration } from '@nuxt/types'
+import { fetchEntries } from './assets/utils/api'
+import { saveEntries } from './assets/utils/generate'
+import { BlogEntry } from './assets/interfaces/Entry'
 
 const config: Configuration = {
   mode: 'universal',
-  /*
-   ** Headers of the page
-   */
   head: {
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%sAsamac',
+    htmlAttrs: {
+      lang: 'ja'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -18,45 +21,36 @@ const config: Configuration = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
   css: [
     'minireset.css',
-    '~/assets/styles/animate.css',
-    '~/assets/styles/style.css'
+    './assets/styles/style.css',
+    './assets/styles/animate.css'
   ],
-  /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: ['~/plugins/vue-fragment'],
-  /*
-   ** Nuxt.js dev-modules
-   */
+  plugins: ['./plugins/vue-fragment'],
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
     '@nuxt/typescript-build'
   ],
-  /*
-   ** Nuxt.js modules
-   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    'nuxt-webfontloader'
+    'nuxt-webfontloader',
+    'nuxt-compress'
   ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
   axios: {},
+  pwa: {
+    manifest: {
+      name: 'Asamac',
+      lang: 'ja'
+    },
+    meta: {
+      name: 'Asamac',
+      theme_color: '#252627',
+      ogType: ''
+    }
+  },
   webfontloader: {
     custom: {
       families: ['M PLUS Rounded 1c:n4,n7,n8', 'Fira Mono:n4'],
@@ -66,13 +60,15 @@ const config: Configuration = {
       ]
     }
   },
-  /*
-   ** Build configuration
-   */
+  'nuxt-compress': {
+    gzip: {
+      cache: true
+    },
+    brotli: {
+      threshold: 10240
+    }
+  },
   build: {
-    /*
-     ** You can extend webpack config here
-     */
     extend(config, _ctx) {
       if (!config.module) return
       config.module.rules.push({
@@ -84,6 +80,48 @@ const config: Configuration = {
       preset: {
         stage: 0
       }
+    },
+    optimizeCSS: {
+      cssProcessor: require('cssnano'),
+      cssProcessorPluginOptions: {
+        preset: [
+          'default',
+          {
+            discardComments: {
+              removeAll: true
+            }
+          }
+        ]
+      }
+    },
+    analyze: {
+      analyzerMode: 'server'
+    }
+  },
+  hooks: {
+    generate: {
+      async before() {
+        const entries = await fetchEntries(1000)
+        await saveEntries(entries)
+      }
+    }
+  },
+  generate: {
+    async routes() {
+      const entries: BlogEntry[] = (await import('./assets/entries/list.json'!))
+        .default
+
+      const blogRoute = {
+        route: '/blog',
+        payload: entries
+      }
+
+      const entryRoutes = entries.map((entry) => ({
+        route: `/blog/${entry.id}`,
+        payload: entry
+      }))
+
+      return [blogRoute, ...entryRoutes]
     }
   }
 }
