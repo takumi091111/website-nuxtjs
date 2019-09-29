@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+/* eslint vue/no-v-html: 0 */
 import Vue from 'vue'
 import { convertToHTML } from '~/assets/utils/markdown'
 import 'highlight.js/styles/gruvbox-dark.css'
