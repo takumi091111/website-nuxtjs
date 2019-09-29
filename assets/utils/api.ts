@@ -6,5 +6,9 @@ export const fetchEntries = (limit = 10, skip = 0) => {
     space: process.env.CTF_SPACE_ID!,
     accessToken: process.env.CTF_CDA_ACCESS_TOKEN!
   })
-  return client.getEntries<EntryFields>({ limit, skip })
+  return client.getEntries<EntryFields>({
+    order: '-sys.createdAt',
+    limit,
+    skip
+  })
 }
