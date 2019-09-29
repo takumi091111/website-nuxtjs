@@ -30,6 +30,11 @@ export default Vue.extend({
     return {
       links
     }
+  },
+  head() {
+    return {
+      title: ''
+    }
   }
 })
 </script>

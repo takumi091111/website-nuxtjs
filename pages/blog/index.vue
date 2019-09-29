@@ -1,32 +1,42 @@
 <template>
-  <main-container is-centered>
-    <article-list :articles="articles.items">
-      <template #default="{article}">
-        <article-list-item :article="article" />
+  <main-container>
+    <entry-list :entries="entries">
+      <template #default="{entry}">
+        <entry-list-item :entry="entry" />
       </template>
-    </article-list>
+    </entry-list>
   </main-container>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import MainContainer from '~/components/MainContainer.vue'
-import ArticleList from '~/components/ArticleList.vue'
-import ArticleListItem from '~/components/ArticleListItem.vue'
-import { Articles } from '~/assets/interfaces/Article'
-import { fetchArticles } from '~/assets/utils/api'
+import EntryList from '~/components/EntryList.vue'
+import EntryListItem from '~/components/EntryListItem.vue'
+import { BlogEntry } from '~/assets/interfaces/Entry'
 export default Vue.extend({
   components: {
     MainContainer,
-    ArticleList,
-    ArticleListItem
+    EntryList,
+    EntryListItem
   },
   async asyncData({ payload }) {
     if (payload) {
-      return { articles: payload as Articles }
+      return {
+        entries: payload as BlogEntry[]
+      }
     }
+
+    const entries: BlogEntry[] = (await import('~/assets/entries/list.json'!))
+      .default
+
     return {
-      articles: await fetchArticles(1000)
+      entries
+    }
+  },
+  head() {
+    return {
+      title: 'Blog | '
     }
   }
 })

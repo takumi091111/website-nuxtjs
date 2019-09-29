@@ -1,6 +1,6 @@
 <template>
   <ul class="entry-list">
-    <li v-for="entry in entries" :key="entry.sys.id">
+    <li v-for="entry in entries" :key="entry.id">
       <slot :entry="entry" />
     </li>
   </ul>
@@ -8,11 +8,11 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Entry } from '~/assets/interfaces/Entry'
+import { BlogEntry } from '~/assets/interfaces/Entry'
 export default Vue.extend({
   props: {
     entries: {
-      type: Array as PropType<Entry[]>,
+      type: Array as PropType<BlogEntry[]>,
       required: true
     }
   }

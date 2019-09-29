@@ -1,28 +1,28 @@
 <template>
   <nuxt-link class="entry-list-item" :to="link">
-    <h1>{{ entry.fields.title }}</h1>
+    <h1>{{ entry.title }}</h1>
     <p class="date">{{ date }}</p>
-    <p class="summary">{{ entry.fields.summary }}</p>
+    <p class="summary">{{ entry.summary }}</p>
   </nuxt-link>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Entry } from '~/assets/interfaces/Entry'
+import { BlogEntry } from '~/assets/interfaces/Entry'
 export default Vue.extend({
   props: {
     entry: {
-      type: Object as PropType<Entry>,
+      type: Object as PropType<BlogEntry>,
       required: true
     }
   },
   computed: {
     link() {
-      const link = `/blog/entry/${this.entry.sys.id}`
+      const link = `/blog/${this.entry.id}`
       return link
     },
     date() {
-      const createdAt = new Date(this.entry.sys.createdAt)
+      const createdAt = new Date(this.entry.createdAt)
       return [
         createdAt.getFullYear(),
         ('0' + (createdAt.getMonth() + 1)).slice(-2),

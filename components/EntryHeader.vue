@@ -27,6 +27,11 @@ export default Vue.extend({
         ('0' + createdAt.getDate()).slice(-2)
       ].join('.')
     }
+  },
+  head() {
+    return {
+      title: `${this.title} | `
+    }
   }
 })
 </script>

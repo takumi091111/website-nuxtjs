@@ -43,6 +43,7 @@ import NavigationList from '~/components/NavigationList.vue'
 import NavigationListItem from '~/components/NavigationListItem.vue'
 import FloatingButton from '~/components/FloatingButton.vue'
 import Footer from '~/components/Footer.vue'
+import { Themes } from '~/assets/interfaces/Theme'
 import routes from '~/assets/data/routes.json'
 import themes from '~/assets/data/themes.json'
 export default Vue.extend({
@@ -69,7 +70,7 @@ export default Vue.extend({
   },
   computed: {
     currentTheme(): object {
-      return this.themes[this.theme]
+      return (this.themes as Themes)[this.theme]
     }
   },
   methods: {

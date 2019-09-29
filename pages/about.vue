@@ -43,6 +43,11 @@ export default Vue.extend({
     return {
       skills
     }
+  },
+  head() {
+    return {
+      title: 'About | '
+    }
   }
 })
 </script>

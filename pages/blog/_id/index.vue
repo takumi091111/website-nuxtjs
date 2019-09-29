@@ -1,33 +1,30 @@
 <template>
-  <article-container>
-    <article-header
-      :title="article.fields.title"
-      :created-at="article.sys.createdAt"
-    />
+  <entry-container>
+    <entry-header :title="entry.title" :created-at="entry.createdAt" />
     <separator />
-    <article-body :body="article.fields.body" />
-  </article-container>
+    <entry-body :body="entry.body" />
+  </entry-container>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import ArticleContainer from '~/components/ArticleContainer.vue'
+import EntryContainer from '~/components/EntryContainer.vue'
+import EntryHeader from '~/components/EntryHeader.vue'
+import EntryBody from '~/components/EntryBody.vue'
 import Separator from '~/components/Separator.vue'
-import ArticleHeader from '~/components/ArticleHeader.vue'
-import ArticleBody from '~/components/ArticleBody.vue'
 export default Vue.extend({
   components: {
-    ArticleContainer,
-    Separator,
-    ArticleHeader,
-    ArticleBody
+    EntryContainer,
+    EntryHeader,
+    EntryBody,
+    Separator
   },
   async asyncData({ params, payload }) {
     if (payload) {
-      return { article: payload }
+      return { entry: payload }
     }
     return {
-      article: await import(`~/static/articles/${params.id}.json`)
+      entry: await import(`~/assets/entries/${params.id}.json`)
     }
   }
 })
