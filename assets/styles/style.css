@@ -4,6 +4,10 @@ html {
   letter-spacing: 0.5px;
 }
 
+button {
+  outline: none;
+}
+
 button:hover {
   cursor: pointer;
 }
