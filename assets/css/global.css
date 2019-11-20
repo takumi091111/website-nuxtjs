@@ -1,0 +1,62 @@
+body {
+  font-size: 14px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  letter-spacing: 0.5px;
+}
+a, h1, h2, h3, h4, li, p, span, input, pre {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  transform: rotate(0.028deg);
+}
+a, h1, h2, h3, h4, p {
+  transition: color 0.2s;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  background-color: inherit;
+  border: none;
+}
+button:focus {
+  outline: none;
+}
+svg {
+  transition: fill 0.2s;
+  fill: var(--font-color);
+}
+svg:focus {
+  outline: none;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.justify-center {
+  justify-content: center;
+}
+.h-full {
+  height: 100%;
+}
+.max-w-640 {
+  max-width: 640px;
+}
+.max-w-800 {
+  max-width: 800px;
+}
+.items-gap > * {
+  margin-bottom: 25px;
+}
+.items-gap > *:last-child {
+  margin: 0;
+}
+@media (min-width: 641px) {
+  body {
+    font-size: 16px;
+  }
+  .items-gap > * {
+    margin-bottom: 30px;
+  }
+}

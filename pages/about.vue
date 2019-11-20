@@ -1,43 +1,35 @@
 <template>
-  <main-container is-centered>
-    <section-container>
-      <h1>ABOUT</h1>
-      <separator />
-      <p>Webの開発を得意としています。</p>
-    </section-container>
-    <section-container>
-      <h1>SKILLS</h1>
-      <separator />
-      <skill-list :skills="skills">
-        <template #default="{skill}">
-          <skill-list-item :skill="skill">
-            <template #default="{icon}">
-              <skill-list-item-icon :name="icon" />
-            </template>
-          </skill-list-item>
-        </template>
-      </skill-list>
-    </section-container>
-  </main-container>
+  <div class="flex justify-center h-full items-gap">
+    <heading>ABOUT</heading>
+    <separator />
+    <p>Webの開発を得意としています。</p>
+    <heading>SKILLS</heading>
+    <separator />
+    <skill-list :items="skills">
+      <template #default="{item}">
+        <skill-list-item
+          :title="item.title"
+          :summary="item.summary"
+          :icon="item.icon"
+        />
+      </template>
+    </skill-list>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MainContainer from '~/components/MainContainer.vue'
-import SectionContainer from '~/components/SectionContainer.vue'
+import Heading from '~/components/Heading.vue'
 import Separator from '~/components/Separator.vue'
 import SkillList from '~/components/SkillList.vue'
 import SkillListItem from '~/components/SkillListItem.vue'
-import SkillListItemIcon from '~/components/SkillListItemIcon.vue'
 import skills from '~/assets/data/skills.json'
 export default Vue.extend({
   components: {
-    MainContainer,
-    SectionContainer,
+    Heading,
     Separator,
     SkillList,
-    SkillListItem,
-    SkillListItemIcon
+    SkillListItem
   },
   data() {
     return {

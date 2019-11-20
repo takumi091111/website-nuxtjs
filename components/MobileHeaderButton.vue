@@ -1,5 +1,5 @@
 <template>
-  <button class="mobile-header-button" :aria-label="label" @click="onClick">
+  <button :aria-label="label" class="mobile-header-button">
     <slot />
   </button>
 </template>
@@ -10,22 +10,21 @@ export default Vue.extend({
   props: {
     label: {
       type: String,
-      required: true
-    }
-  },
-  methods: {
-    onClick() {
-      this.$emit('click')
+      required: true,
+      default: ''
     }
   }
 })
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .mobile-header-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 50px;
-  height: 50px;
-  background-color: transparent;
+  height: 47px;
   border: none;
 }
 </style>

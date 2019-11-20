@@ -1,41 +1,47 @@
 <template>
-  <nuxt-link :to="route.path" @click.native="onClick">
-    {{ route.name }}
+  <nuxt-link :to="link" class="navigation-list-item">
+    {{ title }}
   </nuxt-link>
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
-import { Route } from '~/assets/interfaces/Route'
+import Vue from 'vue'
 export default Vue.extend({
   props: {
-    route: {
-      type: Object as PropType<Route>,
-      required: true
-    }
-  },
-  methods: {
-    onClick() {
-      return this.$emit('click')
+    title: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    link: {
+      type: String,
+      required: true,
+      default: ''
     }
   }
 })
 </script>
 
-<style lang="postcss" scoped>
-a {
-  &:hover {
-    color: var(--font-hover-color);
-    background-color: var(--background-hover-color);
-  }
-  display: block;
-  color: var(--font-color);
+<style scoped>
+.navigation-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 40px;
   font-weight: 800;
-  font-size: 1.4rem;
-  line-height: 40px;
-  text-align: center;
+  font-size: 1.1rem;
   text-decoration: none;
   border-radius: 25px;
-  transition: all 0.2s;
+  transition: color 0.2s, background-color 0.2s;
+}
+.navigation-list-item:hover {
+  color: var(--font-hover-color);
+  background-color: var(--background-hover-color);
+}
+@media (min-width: 641px) {
+  .navigation-list-item {
+    font-size: 1.2rem;
+  }
 }
 </style>

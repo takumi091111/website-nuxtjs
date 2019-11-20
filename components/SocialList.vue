@@ -1,30 +1,42 @@
 <template>
   <ul class="social-list">
-    <li v-for="link in links" :key="link.name">
-      <slot :link="link" />
+    <li v-for="(item, index) in items" :key="index" class="social-list-item">
+      <slot :item="item" />
     </li>
   </ul>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Link } from '~/assets/interfaces/Link'
+import { SocialItem } from '~/assets/interfaces/SocialItem'
 export default Vue.extend({
   props: {
-    links: {
-      type: Array as PropType<Link[]>,
-      required: true
+    items: {
+      type: Array as PropType<SocialItem[]>,
+      required: true,
+      default: () => []
     }
   }
 })
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .social-list {
   display: grid;
-  grid-column-gap: 25px;
-  grid-template-rows: 50px;
-  grid-template-columns: repeat(3, 50px);
+  grid-template-rows: 35px;
+  grid-template-columns: repeat(3, 35px);
+  gap: 0 25px;
+}
+.social-list-item {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  list-style: none;
+}
+@media (min-width: 641px) {
+  .social-list {
+    grid-template-rows: 50px;
+    grid-template-columns: repeat(3, 50px);
+  }
 }
 </style>

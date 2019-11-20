@@ -1,4 +1,10 @@
-interface Theme {
+export interface Themes {
+  [key: string]: Theme
+  light: Theme
+  dark: Theme
+}
+
+export interface Theme {
   '--black': string
   '--white': string
   '--gray': string
@@ -11,10 +17,4 @@ interface Theme {
   '--border-hover-color': string
   '--code-block-font-color': string
   '--code-block-background-color': string
-}
-
-export interface Themes {
-  [key: string]: Theme
-  light: Theme
-  dark: Theme
 }

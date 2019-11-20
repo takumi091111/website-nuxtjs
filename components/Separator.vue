@@ -1,38 +1,18 @@
 <template>
-  <hr :class="separaterClass" />
+  <hr class="hr" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({
-  props: {
-    isHalf: {
-      type: Boolean,
-      required: false,
-      default: false
-    }
-  },
-  computed: {
-    separaterClass() {
-      const className = 'separator'
-      return [className, this.isHalf ? 'half' : ''].join(' ').trim()
-    }
-  }
-})
+export default Vue.extend()
 </script>
 
-<style lang="postcss" scoped>
-.separator {
+<style scoped>
+.hr {
   width: 100%;
-  max-width: 1000px;
-  border-color: var(--border-color);
-  border-style: solid;
-  border-width: 1.5px 0;
-  border-radius: 2px;
-}
-
-.half {
-  width: calc(100vw - 50px);
-  max-width: 500px;
+  height: 3px;
+  background-color: var(--border-color);
+  border: none;
+  transition: background-color 0.2s;
 }
 </style>

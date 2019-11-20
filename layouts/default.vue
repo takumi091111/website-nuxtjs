@@ -1,33 +1,51 @@
 <template>
-  <grid :style="currentTheme">
-    <template #header>
-      <mobile-header>
-        <mobile-header-button label="Toggle Theme" @click="toggleTheme">
-          <theme-icon />
-        </mobile-header-button>
-        <mobile-header-button label="Toggle Menu" @click="toggleMenu">
-          <menu-icon v-if="!isExpanded" />
-          <close-icon v-if="isExpanded" />
-        </mobile-header-button>
-      </mobile-header>
-      <navigation :is-expanded="isExpanded">
-        <navigation-list :routes="routes">
-          <template #default="{route}">
-            <navigation-list-item :route="route" @click="closeMenu" />
-          </template>
-        </navigation-list>
-      </navigation>
+  <theme>
+    <template #default="{currentTheme, toggleTheme}">
+      <grid :style="currentTheme">
+        <template #header>
+          <toggle-open>
+            <template #default="{isOpen, toggleOpen, close}">
+              <navigation :is-open="isOpen">
+                <mobile-header>
+                  <mobile-header-button
+                    @click.native="toggleTheme"
+                    label="Toggle Theme"
+                  >
+                    <theme-icon />
+                  </mobile-header-button>
+                  <mobile-header-button
+                    @click.native="toggleOpen"
+                    label="Toggle Menu"
+                  >
+                    <menu-icon v-if="!isOpen" />
+                    <close-icon v-if="isOpen" />
+                  </mobile-header-button>
+                </mobile-header>
+                <navigation-list :items="menuItems">
+                  <template #default="{item}">
+                    <navigation-list-item
+                      :title="item.title"
+                      :link="item.link"
+                      @click.native="close"
+                    />
+                  </template>
+                </navigation-list>
+              </navigation>
+            </template>
+          </toggle-open>
+        </template>
+        <template #main>
+          <nuxt />
+          <floating-button @click.native="toggleTheme" label="Toggle Theme">
+            <theme-icon />
+          </floating-button>
+        </template>
+        <template #footer>
+          <p>&copy; 2019 Asamac</p>
+        </template>
+      </grid>
     </template>
-    <template #main>
-      <nuxt />
-      <floating-button label="Switch Theme" @click="toggleTheme">
-        <theme-icon />
-      </floating-button>
-    </template>
-    <template #footer>
-      <v-footer />
-    </template>
-  </grid>
+  </theme>
 </template>
 
 <script lang="ts">
@@ -42,47 +60,27 @@ import Navigation from '~/components/Navigation.vue'
 import NavigationList from '~/components/NavigationList.vue'
 import NavigationListItem from '~/components/NavigationListItem.vue'
 import FloatingButton from '~/components/FloatingButton.vue'
-import Footer from '~/components/Footer.vue'
-import { Themes } from '~/assets/interfaces/Theme'
-import routes from '~/assets/data/routes.json'
-import themes from '~/assets/data/themes.json'
+import Theme from '~/components/renderless/Theme.vue'
+import ToggleOpen from '~/components/renderless/ToggleOpen.vue'
+import menuItems from '~/assets/data/menu.json'
 export default Vue.extend({
   components: {
     Grid,
+    MobileHeader,
+    MobileHeaderButton,
     MenuIcon,
     CloseIcon,
     ThemeIcon,
-    MobileHeader,
-    MobileHeaderButton,
     Navigation,
     NavigationList,
     NavigationListItem,
     FloatingButton,
-    'v-footer': Footer
+    Theme,
+    ToggleOpen
   },
   data() {
     return {
-      routes,
-      themes,
-      theme: 'light',
-      isExpanded: null as Boolean | null
-    }
-  },
-  computed: {
-    currentTheme(): object {
-      return (this.themes as Themes)[this.theme]
-    }
-  },
-  methods: {
-    toggleTheme() {
-      this.theme = this.theme === 'light' ? 'dark' : 'light'
-    },
-    toggleMenu() {
-      const isExpanded = this.isExpanded
-      this.isExpanded = isExpanded === null ? true : !isExpanded
-    },
-    closeMenu() {
-      this.isExpanded = false
+      menuItems
     }
   }
 })

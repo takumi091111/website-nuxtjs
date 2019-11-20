@@ -1,5 +1,5 @@
 <template>
-  <img svg-inline src="~/assets/images/theme.svg" />
+  <img class="theme" svg-inline src="~/assets/images/theme.svg" />
 </template>
 
 <script lang="ts">
@@ -7,8 +7,8 @@ import Vue from 'vue'
 export default Vue.extend()
 </script>
 
-<style lang="postcss" scoped>
-svg {
+<style scoped>
+.theme {
   width: 30px;
   height: 30px;
 }

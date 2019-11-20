@@ -1,6 +1,6 @@
 <template>
   <ul class="entry-list">
-    <li v-for="entry in entries" :key="entry.id">
+    <li v-for="(entry, index) in entries" :key="index" class="entry-list-item">
       <slot :entry="entry" />
     </li>
   </ul>
@@ -13,26 +13,18 @@ export default Vue.extend({
   props: {
     entries: {
       type: Array as PropType<BlogEntry[]>,
-      required: true
+      required: true,
+      default: () => []
     }
   }
 })
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .entry-list {
-  display: flex;
-  flex-direction: column;
-  & li {
-    &:nth-child(1) {
-      padding: 0;
-      padding-bottom: calc(25px / 2);
-    }
-    &:nth-last-child(1) {
-      padding: 0;
-      padding-top: calc(25px / 2);
-    }
-    padding: calc(25px / 2) 0;
-  }
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px 0;
+  width: 100%;
 }
 </style>

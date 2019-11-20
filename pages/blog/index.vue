@@ -1,37 +1,32 @@
 <template>
-  <main-container>
-    <entry-list :entries="entries">
-      <template #default="{entry}">
-        <entry-list-item :entry="entry" />
-      </template>
-    </entry-list>
-  </main-container>
+  <div class="flex h-full">
+    <div class="flex justify-center max-w-640">
+      <entry-list :entries="entries">
+        <template #default="{entry}">
+          <entry-list-item
+            :id="entry.id"
+            :title="entry.title"
+            :created-at="entry.createdAt"
+            :summary="entry.summary"
+          />
+        </template>
+      </entry-list>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MainContainer from '~/components/MainContainer.vue'
 import EntryList from '~/components/EntryList.vue'
 import EntryListItem from '~/components/EntryListItem.vue'
-import { BlogEntry } from '~/assets/interfaces/Entry'
 export default Vue.extend({
   components: {
-    MainContainer,
     EntryList,
     EntryListItem
   },
   async asyncData({ payload }) {
-    if (payload) {
-      return {
-        entries: payload as BlogEntry[]
-      }
-    }
-
-    const entries: BlogEntry[] = (await import('~/assets/entries/list.json'!))
-      .default
-
     return {
-      entries
+      entries: payload || (await import('~/assets/entries/list.json'!)).default
     }
   },
   head() {

@@ -1,5 +1,5 @@
 <template>
-  <img svg-inline src="~/assets/images/menu.svg" />
+  <img class="menu" svg-inline src="~/assets/images/menu.svg" />
 </template>
 
 <script lang="ts">
@@ -7,9 +7,9 @@ import Vue from 'vue'
 export default Vue.extend()
 </script>
 
-<style lang="postcss" scoped>
-svg {
-  width: 30px;
-  height: 30px;
+<style scoped>
+.menu {
+  width: 25px;
+  height: 25px;
 }
 </style>

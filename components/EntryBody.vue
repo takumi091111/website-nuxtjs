@@ -1,9 +1,8 @@
 <template>
-  <section class="entry-body" v-html="html" />
+  <section v-html="html" class="entry-body" />
 </template>
 
 <script lang="ts">
-/* eslint vue/no-v-html: 0 */
 import Vue from 'vue'
 import { convertToHTML } from '~/assets/utils/markdown'
 import 'highlight.js/styles/gruvbox-dark.css'
@@ -11,7 +10,8 @@ export default Vue.extend({
   props: {
     body: {
       type: String,
-      required: true
+      required: true,
+      default: ''
     }
   },
   computed: {
@@ -22,107 +22,105 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .entry-body {
-  width: calc(100vw - 40px);
-  max-width: 800px;
-  @media (max-width: 800px) {
-    width: calc(100vw - 40px);
-  }
-  & >>> h1 {
-    &::after {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 0;
-      border-bottom: 3px solid var(--border-color);
-      content: '';
-    }
-    margin-bottom: 25px;
-    padding: 25px 0;
-    font-weight: bold;
-    font-size: 1.7rem;
-    line-height: 130%;
-    @media (max-width: 480px) {
-      font-size: 1.5rem;
-    }
-  }
-
-  & >>> h2 {
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 1.4rem;
-  }
-
-  & >>> a {
-    color: var(--font-color);
-  }
-
-  & >>> p,
-  & >>> ul,
-  & >>> ol {
+  width: 100%;
+}
+.entry-body >>> *:not(:last-child) {
+  margin-bottom: 25px;
+}
+.entry-body >>> ol > li:not(:last-child) {
+  margin-bottom: 25px;
+}
+.entry-body >>> p,
+.entry-body >>> ul,
+.entry-body >>> ol {
+  line-height: 1.5rem;
+}
+.entry-body >>> h1 {
+  padding-bottom: 25px;
+  font-size: 1.2rem;
+}
+.entry-body >>> h1::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-bottom: 3px solid var(--border-color);
+  transition: border-color 0.2s;
+  content: '';
+}
+.entry-body >>> h2 {
+  font-size: 1.1rem;
+}
+.entry-body >>> h1,
+.entry-body >>> h2 {
+  font-weight: bold;
+}
+.entry-body >>> a {
+  transition: none;
+}
+.entry-body >>> a[href] {
+  text-decoration: underline;
+}
+.entry-body >>> ul {
+  padding: 0 0 0 1.3rem;
+  list-style: square;
+}
+.entry-body >>> ul > li {
+  transition: color 0.2s;
+}
+.entry-body >>> ol {
+  list-style: none;
+}
+.entry-body >>> hr {
+  width: 100%;
+  height: 3px;
+  background-color: var(--border-color);
+  border: none;
+  transition: background-color 0.2s;
+}
+.entry-body >>> pre {
+  background-color: var(--code-block-background-color);
+}
+.entry-body >>> blockquote {
+  background-color: var(--gray);
+  transition: background-color 0.2s;
+}
+.entry-body >>> pre,
+.entry-body >>> blockquote {
+  padding: 10px;
+  overflow-x: auto;
+  border-radius: 10px;
+}
+.entry-body >>> code {
+  color: var(--code-block-font-color);
+  font-family: 'Fira Mono', 'M PLUS Rounded 1c', monospace;
+  background-color: var(--code-block-background-color);
+}
+.entry-body >>> :not(pre) > code {
+  margin: 0 5px;
+  padding: 3px 6px;
+  border-radius: 7px;
+}
+.entry-body >>> blockquote > p > code {
+  margin: 0;
+}
+@media (min-width: 641px) {
+  .entry-body >>> p,
+  .entry-body >>> ul,
+  .entry-body >>> ol {
     line-height: 1.8rem;
   }
-
-  & >>> ul,
-  & >>> ol {
-    margin-bottom: 25px;
+  .entry-body >>> h1 {
+    font-size: 1.7rem;
   }
-
-  & >>> p {
-    & img:not(:last-child) {
-      margin-bottom: 25px;
-    }
-    margin-bottom: 25px;
+  .entry-body >>> h1 {
+    font-size: 1.5rem;
   }
-
-  & >>> ul {
+  .entry-body >>> ul {
     padding: 0 0 0 1.5rem;
-    list-style: square;
-  }
-
-  & >>> ol {
-    list-style: none;
-  }
-
-  & >>> blockquote {
-    & p {
-      margin-bottom: 0;
-    }
-    margin-bottom: 25px;
-    padding: 10px;
-    overflow-x: auto;
-    background-color: var(--gray);
-    border-radius: 10px;
-  }
-
-  & >>> pre {
-    margin-bottom: 25px;
-    padding: 10px;
-    overflow-x: auto;
-    background-color: var(--code-block-background-color);
-    border-radius: 10px;
-  }
-
-  & >>> code {
-    color: var(--code-block-font-color);
-    font-family: 'Fira Mono', 'M PLUS Rounded 1c', monospace;
-    background-color: var(--code-block-background-color);
-  }
-
-  & >>> :not(pre) > code {
-    margin: 0 5px;
-    padding: 3px 6px;
-    border-radius: 7px;
-  }
-
-  & >>> hr {
-    margin-bottom: 25px;
-    border-color: var(--border-color);
-    border-style: solid;
-    border-width: 1.5px 0;
-    border-radius: 2px;
   }
 }
 </style>

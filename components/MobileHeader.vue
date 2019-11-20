@@ -9,12 +9,16 @@ import Vue from 'vue'
 export default Vue.extend()
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .mobile-header {
-  display: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  @media (max-width: 640px) {
-    display: flex;
+}
+@media (min-width: 641px) {
+  .mobile-header {
+    display: none;
   }
 }
 </style>

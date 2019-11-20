@@ -1,56 +1,56 @@
 [
   {
-    "name": "HTML",
+    "title": "HTML",
     "summary": "HTML5, Pug",
     "icon": "html"
   },
   {
-    "name": "CSS",
+    "title": "CSS",
     "summary": "SCSS, PostCSS",
     "icon": "css"
   },
   {
-    "name": "JavaScript",
+    "title": "JavaScript",
     "summary": "Vue.js, React, Node.js",
     "icon": "js"
   },
   {
-    "name": "TypeScript",
+    "title": "TypeScript",
     "summary": "Apollo, TypeORM",
     "icon": "ts"
   },
   {
-    "name": "Ruby",
+    "title": "Ruby",
     "summary": "Sinatra, Discord Bot",
     "icon": "rb"
   },
   {
-    "name": "PHP",
+    "title": "PHP",
     "summary": "Slim",
     "icon": "php"
   },
   {
-    "name": "C#",
+    "title": "C#",
     "summary": "WinForms, .NET Core",
     "icon": "cs"
   },
   {
-    "name": "Java",
+    "title": "Java",
     "summary": "Servlet, JSP",
     "icon": "java"
   },
   {
-    "name": "Database",
+    "title": "Database",
     "summary": "MySQL, Oracle, Access",
     "icon": "mysql"
   },
   {
-    "name": "Git",
+    "title": "Git",
     "summary": "バージョン管理",
     "icon": "git"
   },
   {
-    "name": "Photoshop",
+    "title": "Photoshop",
     "summary": "画像編集",
     "icon": "ps"
   }

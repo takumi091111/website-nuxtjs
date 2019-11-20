@@ -1,26 +1,30 @@
 <template>
-  <main-container is-centered>
-    <avatar />
-    <separator is-half />
-    <social-list :links="links">
-      <template #default="{link}">
-        <social-list-item :link="link" />
-      </template>
-    </social-list>
-  </main-container>
+  <div class="flex justify-center h-full">
+    <div class="flex justify-center h-full max-w-640 items-gap">
+      <avatar />
+      <separator />
+      <social-list :items="items">
+        <template #default="{item}">
+          <social-list-item
+            :icon="item.icon"
+            :link="item.link"
+            :alt="item.alt"
+          />
+        </template>
+      </social-list>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MainContainer from '~/components/MainContainer.vue'
 import Avatar from '~/components/Avatar.vue'
 import Separator from '~/components/Separator.vue'
 import SocialList from '~/components/SocialList.vue'
 import SocialListItem from '~/components/SocialListItem.vue'
-import links from '~/assets/data/links.json'
+import items from '~/assets/data/socials.json'
 export default Vue.extend({
   components: {
-    MainContainer,
     Avatar,
     Separator,
     SocialList,
@@ -28,7 +32,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      links
+      items
     }
   },
   head() {

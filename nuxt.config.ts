@@ -2,7 +2,7 @@ import { config } from 'dotenv'
 import { Configuration } from '@nuxt/types'
 import { fetchEntries } from './assets/utils/api'
 import { saveEntries } from './assets/utils/generate'
-import { BlogEntry } from './assets/interfaces/Entry'
+import { BlogEntry } from '~/assets/interfaces/Entry'
 
 config()
 
@@ -25,25 +25,14 @@ const NuxtConfig: Configuration = {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   loading: { color: '#f7f7f7' },
-  css: [
-    'minireset.css',
-    './assets/styles/style.css',
-    './assets/styles/animate.css'
-  ],
-  plugins: ['./plugins/vue-fragment'],
+  css: ['minireset.css', './assets/css/global.css', './assets/css/animate.css'],
+  plugins: [],
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
     '@nuxt/typescript-build'
   ],
-  modules: [
-    '@nuxtjs/dotenv',
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    'nuxt-webfontloader',
-    'nuxt-compress'
-  ],
-  axios: {},
+  modules: ['@nuxtjs/pwa', 'nuxt-webfontloader', 'nuxt-compress'],
   pwa: {
     manifest: {
       name: 'Asamac',
@@ -82,19 +71,20 @@ const NuxtConfig: Configuration = {
         loader: 'vue-svg-inline-loader'
       })
     },
-    postcss: {
-      preset: {
-        stage: 0
-      }
-    },
     optimizeCSS: {
       cssProcessor: require('cssnano'),
       cssProcessorPluginOptions: {
         preset: [
-          'default',
+          'advanced',
           {
+            autoprefixer: {
+              add: false
+            },
             discardComments: {
               removeAll: true
+            },
+            cssDeclarationSorter: {
+              order: 'smacss'
             }
           }
         ]
@@ -102,7 +92,10 @@ const NuxtConfig: Configuration = {
     },
     analyze: {
       analyzerMode: 'server'
-    }
+    },
+    cache: true,
+    hardSource: true,
+    parallel: true
   },
   hooks: {
     generate: {

@@ -1,12 +1,12 @@
 <template>
   <div class="grid">
-    <header>
+    <header class="header">
       <slot name="header" />
     </header>
-    <main>
+    <main class="main">
       <slot name="main" />
     </main>
-    <footer>
+    <footer class="footer">
       <slot name="footer" />
     </footer>
   </div>
@@ -17,44 +17,49 @@ import Vue from 'vue'
 export default Vue.extend()
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .grid {
   display: grid;
-  grid-row-gap: 25px;
-  grid-template-areas: 'header' 'main' 'footer';
-  grid-template-rows: 50px minmax(calc(100vh - 170px), auto) 50px;
-  grid-template-columns: 1fr;
-  padding: 10px 0;
+  grid-template-rows: minmax(50px, 1fr) minmax(calc(100vh - 150px), auto) 50px;
+  grid-template-columns: minmax(10px, 1fr) minmax(0, 1000px) minmax(10px, 1fr);
+  gap: 25px 0;
   color: var(--font-color);
   background-color: var(--background-color);
-  @media (max-width: 640px) {
-    grid-template-rows: auto minmax(calc(100vh - 153px), auto) 50px;
-    padding: 0;
-  }
+  transition: background-color 0.2s;
 }
-
-header {
-  grid-area: header;
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  grid-row: 1/2;
+  grid-column: 1/4;
+  overflow-y: hidden;
   background-color: var(--background-color);
-  @media (max-width: 640px) {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    border-bottom: 3px solid var(--border-color);
-  }
+  transition: background-color 0.2s;
 }
-
-main {
-  display: flex;
-  grid-area: main;
-  justify-content: center;
-  padding: 0 10px;
+.main {
+  grid-row: 2/3;
+  grid-column: 2/3;
 }
-
-footer {
+.footer {
   display: flex;
-  grid-area: footer;
+  grid-row: 3/4;
+  grid-column: 1/4;
   align-items: center;
   justify-content: center;
+  font-weight: 800;
+}
+@media (min-width: 641px) {
+  .header {
+    position: static;
+    grid-column: 2/3;
+    grid-template-rows: minmax(50px, 1fr) minmax(calc(100vh - 130px), auto) 50px;
+    padding-top: 10px;
+  }
+  .footer {
+    grid-column: 2/3;
+    padding-bottom: 10px;
+    font-size: 1.2rem;
+  }
 }
 </style>

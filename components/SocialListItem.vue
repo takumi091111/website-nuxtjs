@@ -1,25 +1,20 @@
 <template>
-  <a
-    class="social-list-item"
-    :href="link.url"
-    :aria-label="link.name"
-    @click="toggleTooltip"
-  >
-    <tooltip v-if="link.name === 'Discord'" :is-active="isActive">
-      <p>/\sαмας#9352</p>
-    </tooltip>
+  <a :href="link" :aria-label="icon" @click="onClick" class="social-list-item">
     <img
-      v-if="link.name === 'Discord'"
+      v-if="icon === 'discord'"
+      class="social-list-item"
       svg-inline
       src="~/assets/images/discord.svg"
     />
     <img
-      v-if="link.name === 'Twitter'"
+      v-if="icon === 'twitter'"
+      class="social-list-item"
       svg-inline
       src="~/assets/images/twitter.svg"
     />
     <img
-      v-if="link.name === 'GitHub'"
+      v-if="icon === 'github'"
+      class="social-list-item"
       svg-inline
       src="~/assets/images/github.svg"
     />
@@ -27,41 +22,53 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
-import { Link } from '~/assets/interfaces/Link'
-import Tooltip from '~/components/Tooltip.vue'
+import Vue from 'vue'
 export default Vue.extend({
-  components: {
-    Tooltip
-  },
   props: {
+    icon: {
+      type: String,
+      required: true,
+      default: ''
+    },
     link: {
-      type: Object as PropType<Link>,
-      required: true
-    }
-  },
-  data() {
-    return {
-      isActive: false
+      type: String,
+      required: true,
+      default: ''
+    },
+    alt: {
+      type: String,
+      required: true,
+      default: ''
     }
   },
   methods: {
-    toggleTooltip() {
-      this.isActive = !this.isActive
+    onClick() {
+      if (this.alt === '') return
+      const listener = (e: ClipboardEvent) => {
+        e.preventDefault()
+        const clipboardData = e.clipboardData
+        if (clipboardData === null) return
+        clipboardData.setData('text/plain', this.alt)
+        alert(
+          `Discordタグをクリップボードへコピーしました。\nDiscord Tag: ${this.alt}`
+        )
+        document.removeEventListener('copy', listener)
+      }
+      document.addEventListener('copy', listener)
+      document.execCommand('copy', false, this.alt)
     }
   }
 })
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .social-list-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-  & svg {
-    width: 40px;
-    height: 40px;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 641px) {
+  .social-list-item {
+    padding: 5%;
   }
 }
 </style>

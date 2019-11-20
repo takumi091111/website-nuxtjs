@@ -1,5 +1,5 @@
 export interface Skill {
-  name: string
+  title: string
   summary: string
   icon: string
 }

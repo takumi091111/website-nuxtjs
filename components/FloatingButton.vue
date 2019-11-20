@@ -1,5 +1,5 @@
 <template>
-  <button class="floating-button" :aria-label="label" @click="onClick">
+  <button :aria-label="label" class="floating-button">
     <slot />
   </button>
 </template>
@@ -10,33 +10,40 @@ export default Vue.extend({
   props: {
     label: {
       type: String,
-      required: true
-    }
-  },
-  methods: {
-    onClick() {
-      this.$emit('click')
+      required: true,
+      default: ''
     }
   }
 })
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .floating-button {
   position: fixed;
   right: 25px;
   bottom: 25px;
+  display: none;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
   background-color: var(--background-hover-color);
-  border: none;
   border-radius: 25px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-  @media (max-width: 640px) {
-    display: none;
-  }
-  & svg {
-    fill: var(--font-hover-color);
+  transition: background-color 0.2s;
+}
+.floating-button > svg {
+  fill: var(--font-hover-color);
+}
+.floating-button:hover {
+  background-color: var(--background-color);
+}
+.floating-button:hover > svg {
+  fill: var(--font-color);
+}
+@media (min-width: 641px) {
+  .floating-button {
+    display: flex;
   }
 }
 </style>

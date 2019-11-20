@@ -1,7 +1,7 @@
 <template>
   <section class="entry-header">
-    <p class="date">{{ date }}</p>
-    <h1>{{ title }}</h1>
+    <p class="created-at">{{ computedDate }}</p>
+    <h1 class="title">{{ title }}</h1>
   </section>
 </template>
 
@@ -9,17 +9,19 @@
 import Vue from 'vue'
 export default Vue.extend({
   props: {
-    createdAt: {
-      type: String,
-      required: true
-    },
     title: {
       type: String,
-      required: true
+      required: true,
+      default: ''
+    },
+    createdAt: {
+      type: String,
+      required: true,
+      default: ''
     }
   },
   computed: {
-    date() {
+    computedDate() {
       const createdAt = new Date(this.createdAt)
       return [
         createdAt.getFullYear(),
@@ -36,24 +38,23 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .entry-header {
-  width: calc(100vw - 40px);
-  max-width: 800px;
-  @media (max-width: 800px) {
-    width: calc(100vw - 40px);
-  }
-  & .date {
-    color: var(--deep-gray);
-    font-weight: 700;
-  }
-  & h1 {
-    font-weight: 700;
-    font-size: 1.7rem;
-    line-height: 130%;
-    @media (max-width: 480px) {
-      font-size: 1.5rem;
-    }
+  width: 100%;
+}
+.created-at {
+  color: var(--deep-gray);
+  font-weight: bold;
+}
+.title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 25px;
+}
+@media (min-width: 641px) {
+  .title {
+    font-size: 1.6rem;
+    line-height: 30px;
   }
 }
 </style>

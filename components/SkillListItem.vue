@@ -1,56 +1,127 @@
 <template>
   <div class="skill-list-item">
-    <div class="icon-container">
-      <slot :icon="skill.icon" />
+    <div class="skill-icon">
+      <img
+        v-if="icon === 'html'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/html.svg"
+      />
+      <img
+        v-if="icon === 'css'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/css.svg"
+      />
+      <img
+        v-if="icon === 'js'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/js.svg"
+      />
+      <img
+        v-if="icon === 'ts'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/ts.svg"
+      />
+      <img
+        v-if="icon === 'rb'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/rb.svg"
+      />
+      <img
+        v-if="icon === 'php'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/php.svg"
+      />
+      <img
+        v-if="icon === 'cs'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/cs.svg"
+      />
+      <img
+        v-if="icon === 'java'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/java.svg"
+      />
+      <img
+        v-if="icon === 'mysql'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/mysql.svg"
+      />
+      <img
+        v-if="icon === 'git'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/git.svg"
+      />
+      <img
+        v-if="icon === 'ps'"
+        svg-inline
+        class="icon"
+        src="~/assets/images/ps.svg"
+      />
     </div>
-    <div class="text-container">
-      <p class="name">{{ skill.name }}</p>
-      <p>{{ skill.summary }}</p>
+    <div>
+      <p class="title">{{ title }}</p>
+      <p>{{ summary }}</p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
-import { Skill } from '~/assets/interfaces/Skill'
+import Vue from 'vue'
 export default Vue.extend({
   props: {
-    skill: {
-      type: Object as PropType<Skill>,
-      required: true
+    title: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    summary: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    icon: {
+      type: String,
+      required: true,
+      default: ''
     }
   }
 })
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .skill-list-item {
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 90px 1fr;
+  gap: 10px;
   align-items: center;
-  min-width: calc(950px / 3);
-  height: 100px;
+  width: 100%;
+  height: 90px;
   border: 3px solid var(--border-color);
   border-radius: 25px;
-  @media (max-width: 1000px) {
-    min-width: 100%;
-  }
-  & .icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 100px;
-  }
-  & .text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    padding: 0 10px;
-    & .name {
-      font-weight: bold;
-      font-size: 1.4rem;
-    }
-  }
+  transition: border-color 0.2s;
+}
+.skill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  width: 50px;
+  height: 50px;
+}
+.title {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 </style>

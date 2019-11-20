@@ -1,0 +1,5 @@
+[
+  { "title": "HOME", "link": "/" },
+  { "title": "BLOG", "link": "/blog" },
+  { "title": "ABOUT", "link": "/about" }
+]

@@ -1,4 +1,4 @@
-# website-nuxtjs
+# website-nuxtjs-remake
 
 > Asamac&#39;s Portfolio, and Blog
 

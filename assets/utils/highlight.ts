@@ -3,7 +3,6 @@ const hljs = require('highlight.js/lib/highlight')
 hljs.registerLanguage('cs', require('highlight.js/lib/languages/cs'))
 hljs.registerLanguage('css', require('highlight.js/lib/languages/css'))
 hljs.registerLanguage('go', require('highlight.js/lib/languages/go'))
-hljs.registerLanguage('java', require('highlight.js/lib/languages/java'))
 hljs.registerLanguage(
   'javascript',
   require('highlight.js/lib/languages/javascript')
