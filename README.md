@@ -1,6 +1,6 @@
-# website-nuxtjs-remake
+# website-nuxtjs
 
-> Asamac&#39;s Portfolio, and Blog
+> Asamac's Portfolio, and Blog
 
 ## Build Setup
 
