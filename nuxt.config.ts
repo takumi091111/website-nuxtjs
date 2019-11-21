@@ -30,7 +30,16 @@ const NuxtConfig: Configuration = {
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
-    '@nuxt/typescript-build'
+    [
+      '@nuxt/typescript-build',
+      {
+        typeCheck: {
+          memoryLimit: 4096,
+          workers: 2
+        },
+        ignoreNotFoundWarnings: false
+      }
+    ]
   ],
   modules: ['@nuxtjs/pwa', 'nuxt-webfontloader', 'nuxt-compress'],
   pwa: {
