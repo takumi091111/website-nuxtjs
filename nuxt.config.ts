@@ -43,7 +43,10 @@ const NuxtConfig: Configuration = {
     },
     meta: {
       name: 'Asamac',
-      theme_color: '#252627'
+      theme_color: '#252627',
+      twitterCard: 'summary',
+      twitterSite: '@takumi091111',
+      ogHost: 'https://asamac.netlify.com'
     }
   },
   webfontloader: {

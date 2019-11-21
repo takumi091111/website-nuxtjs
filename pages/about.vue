@@ -38,7 +38,15 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'About | '
+      title: 'About | ',
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          property: 'og:title',
+          content: 'About | Asamac'
+        }
+      ]
     }
   }
 })

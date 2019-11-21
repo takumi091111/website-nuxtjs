@@ -1,7 +1,11 @@
 <template>
   <div class="flex h-full">
     <article class="flex justify-center max-w-800 items-gap">
-      <entry-header :title="entry.title" :created-at="entry.createdAt" />
+      <entry-header
+        :title="entry.title"
+        :created-at="entry.createdAt"
+        :summary="entry.summary"
+      />
       <separator />
       <entry-body :body="entry.body" />
     </article>

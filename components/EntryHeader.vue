@@ -18,6 +18,11 @@ export default Vue.extend({
       type: String,
       required: true,
       default: ''
+    },
+    summary: {
+      type: String,
+      required: true,
+      default: ''
     }
   },
   computed: {
@@ -32,7 +37,21 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: `${this.title} | `
+      title: `${this.title} | `,
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          property: 'og:title',
+          content: `${this.title} | Asamac`
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          property: 'og:description',
+          content: this.summary
+        }
+      ]
     }
   }
 })

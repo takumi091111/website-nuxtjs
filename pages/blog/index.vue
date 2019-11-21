@@ -31,7 +31,15 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Blog | '
+      title: 'Blog | ',
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          property: 'og:title',
+          content: 'Blog | Asamac'
+        }
+      ]
     }
   }
 })
