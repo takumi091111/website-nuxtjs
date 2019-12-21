@@ -27,7 +27,7 @@
     "highlight.js": "^9.17.1",
     "marked": "^0.7.0",
     "minireset.css": "^0.0.6",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.11.0",
     "nuxt-compress": "^1.0.2",
     "nuxt-webfontloader": "^1.1.0"
   },
