@@ -45,7 +45,7 @@
     "cssnano-preset-advanced": "^4.0.7",
     "dotenv": "^8.2.0",
     "eslint": "^6.1.0",
-    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^2.6.0",
