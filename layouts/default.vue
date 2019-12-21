@@ -8,14 +8,14 @@
               <navigation :is-open="isOpen">
                 <mobile-header>
                   <mobile-header-button
-                    @click.native="toggleTheme"
                     label="Toggle Theme"
+                    @click.native="toggleTheme"
                   >
                     <theme-icon />
                   </mobile-header-button>
                   <mobile-header-button
-                    @click.native="toggleOpen"
                     label="Toggle Menu"
+                    @click.native="toggleOpen"
                   >
                     <menu-icon v-if="!isOpen" />
                     <close-icon v-if="isOpen" />
@@ -36,7 +36,7 @@
         </template>
         <template #main>
           <nuxt />
-          <floating-button @click.native="toggleTheme" label="Toggle Theme">
+          <floating-button label="Toggle Theme" @click.native="toggleTheme">
             <theme-icon />
           </floating-button>
         </template>

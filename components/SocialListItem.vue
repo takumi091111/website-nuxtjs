@@ -1,5 +1,5 @@
 <template>
-  <a :href="link" :aria-label="icon" @click="onClick" class="social-list-item">
+  <a :href="link" :aria-label="icon" class="social-list-item" @click="onClick">
     <img
       v-if="icon === 'discord'"
       class="social-list-item"

@@ -1,5 +1,5 @@
 <template>
-  <section v-html="html" class="entry-body" />
+  <section class="entry-body" v-html="html" />
 </template>
 
 <script lang="ts">
