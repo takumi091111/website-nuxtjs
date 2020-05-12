@@ -24,7 +24,7 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.3.3",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "highlight.js": "^9.17.1",
+    "highlight.js": "^10.0.3",
     "marked": "^0.8.0",
     "minireset.css": "^0.0.6",
     "nuxt": "^2.0.0",
